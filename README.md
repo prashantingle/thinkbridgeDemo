@@ -1,7 +1,7 @@
 # thinkbridgeDemo
 
 # SqlServer Database (Directory : Database)
-* restore .bak file provided from Database Directory, or run script to create db
+* restore .bak file provided from Database Directory, or create database thinkbridge run script to create datatable
 
 # Backend (.netCore WebApi) (Directory : BackEnd)
   * Install packages from package management console
