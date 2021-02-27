@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <!-- row -->
+  <h1>View Product</h1>
+  <div class="row tm-content-row">
+    <div class="tm-block-col tm-col-account-settings">
+      <div class="tm-bg-primary-dark tm-block tm-block-settings">
+        <h2 class="tm-block-title">Product Details</h2>
+        <form action="" class="tm-signup-form row">
+          <div class="form-group col-lg-6">
+            <label for="name">Product Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="form-control validate"
+              maxlength="50"
+              required
+              disabled
+              value="{{ prod.name }}"
+            />
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="desc">Product Price</label>
+            <input
+              id="desc"
+              name="desc"
+              type="number"
+              min="0"
+              max="10"
+              step="0.01"
+              value="0.00"
+              class="form-control validate"
+              required
+              disabled
+              value="{{ prod.price }}"
+            />
+          </div>
+          <div class="form-group col-lg-12">
+            <label for="desc">Product Description</label>
+            <textarea
+              id="desc"
+              name="desc"
+              type="text"
+              maxlength="200"
+              class="form-control validate"
+              required
+              disabled
+              value="{{ prod.description }}"
+            ></textarea>
+          </div>
+
+          <div class="form-group col-lg-6">
+            <a href="list" class="btn btn-primary btn-block text-uppercase"
+              >back</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="tm-block-col tm-col-avatar">
+      <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+        <h2 class="tm-block-title">Product Photo Preview</h2>
+        <div class="tm-avatar-container">
+          <input id="fileInput" type="file" style="display: none" />
+          <img
+            *ngIf="prod.image"
+            src="{{ prod.image }}"
+            alt="Product Image"
+            class="tm-avatar img-fluid mb-4"
+          />
+          <img
+            *ngIf="!prod.image"
+            src="/assets/img/avatar.png"
+            alt="Product Image"
+            class="tm-avatar img-fluid mb-4"
+          />
+        </div>
+        <!-- <button class="btn btn-primary btn-block text-uppercase">Upload</button> -->
+      </div>
+    </div>
+  </div>
+</div>

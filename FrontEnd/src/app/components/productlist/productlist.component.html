@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <div class="row tm-content-row">
+    <div class="col-sm-12 col-md-12 tm-block-col">
+      <div class="tm-bg-primary-dark tm-block tm-block-products">
+        <div class="tm-product-table-container">
+          <table class="table table-hover tm-table-small tm-product-table">
+            <thead>
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">IMAGE</th>
+                <th scope="col">DATE ADDED</th>
+                <th scope="col">DATE MODIFIED</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prod of products">
+                <td class="tm-product-name">{{ prod.name }}</td>
+                <td>{{ prod.description }}</td>
+                <td>{{ prod.price }}</td>
+
+                <td>
+                  <i
+                    *ngIf="!prod.imageId"
+                    class="far fa-times-circle tm-product-red-icon"
+                  ></i>
+                  <i
+                    *ngIf="prod.imageId"
+                    class="fas fa-check-circle tm-product-green-icon"
+                  ></i>
+                </td>
+                <td>{{ prod.dateAdded }}</td>
+                <td>{{ prod.dateModified }}</td>
+                <td>
+                  <a [routerLink]="['/view', prod.id]">
+                    <i class="far fa-eye tm-product-view-icon"></i>
+                  </a>
+                </td>
+                <td>
+                  <a [routerLink]="['/edit', prod.id]">
+                    <i class="fas fa-pencil-alt"></i>
+                  </a>
+                </td>
+                <td>
+                  <a [routerLink]="['/delete', prod.id]">
+                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- table container -->
+        <a href="add" class="btn btn-primary btn-block text-uppercase mb-3"
+          >Add new product</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

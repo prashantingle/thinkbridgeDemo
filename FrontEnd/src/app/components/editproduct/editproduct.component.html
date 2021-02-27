@@ -1,0 +1,126 @@
+<div class="container mt-5">
+  <!-- row -->
+  <h1>Edit Product</h1>
+  <div class="row tm-content-row">
+    <div class="tm-block-col tm-col-account-settings">
+      <div class="tm-bg-primary-dark tm-block tm-block-settings">
+        <h2 class="tm-block-title">Product Details</h2>
+        <form
+          class="tm-signup-form row"
+          [formGroup]="prodForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="form-group col-lg-6">
+            <label for="name">Product Name</label>
+
+            <input
+              [(ngModel)]="prod.name"
+              type="text"
+              formControlName="name"
+              class="form-control"
+              maxlength="50"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              required
+            />
+
+            <div
+              *ngIf="submitted && f.name.errors"
+              class="alert alert-danger"
+              role="alert"
+            >
+              Please Enter Product Name
+            </div>
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label for="price">Product Price</label>
+
+            <input
+              [(ngModel)]="prod.price"
+              formControlName="price"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+              type="number"
+              min="0"
+              step="0.01"
+              required
+            />
+            <div
+              *ngIf="submitted && f.price.errors"
+              class="alert alert-danger"
+              role="alert"
+            >
+              Please Enter Product Price
+            </div>
+          </div>
+          <div class="form-group col-lg-12">
+            <label for="desc">Product Description</label>
+
+            <textarea
+              type="text"
+              maxlength="200"
+              [(ngModel)]="prod.description"
+              formControlName="desc"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"
+              required
+            ></textarea>
+            <div
+              *ngIf="submitted && f.desc.errors"
+              class="alert alert-danger"
+              role="alert"
+            >
+              Please Enter Product Description
+            </div>
+          </div>
+
+          <div class="form-group col-lg-12">
+            <label for="myfile">Product Image</label>
+            <input
+              type="file"
+              id="myfile"
+              name="myfile"
+              class="form-control"
+              accept="image/*"
+              single
+              (change)="onSelectFile($event)"
+            />
+          </div>
+
+          <div class="form-group col-lg-12">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block text-uppercase"
+            >
+              Update Product
+            </button>
+            <a href="list" class="btn btn-primary btn-block text-uppercase"
+              >back</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="tm-block-col tm-col-avatar">
+      <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+        <h2 class="tm-block-title">Product Photo Preview</h2>
+        <div class="tm-avatar-container">
+          <input id="fileInput" type="file" style="display: none" />
+          <img
+            *ngIf="prod.image"
+            src="{{ prod.image }}"
+            alt="Product Image"
+            class="tm-avatar img-fluid mb-4"
+          />
+          <img
+            *ngIf="!prod.image"
+            src="/assets/img/avatar.png"
+            alt="Product Image"
+            class="tm-avatar img-fluid mb-4"
+          />
+        </div>
+        <!-- <button class="btn btn-primary btn-block text-uppercase">Upload</button> -->
+      </div>
+    </div>
+  </div>
+</div>
